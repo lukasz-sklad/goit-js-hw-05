@@ -1,9 +1,13 @@
 'use strict'
 // Zadeklarowano funkcję strzałkową getTotalBalanceByGender(users, gender);
 
+const getTotalBalanceByGender = (users, gender) => {
+	return users
+		.flatMap(user => (user.gender === gender ? [user.balance] : []))
+		.reduce((total, balance) => total + balance, 0)
+}
 
-
-const allUsers = [
+const usersList = [ //allUsers
 	{
     name: "Moore Hensley",
     gender: "male",
@@ -41,6 +45,5 @@ const allUsers = [
   }
 ];
 
-console.log(getTotalBalanceByGender(allUsers, "male")); // 12053
-
-console.log(getTotalBalanceByGender(allUsers, "female")); // 8863
+console.log(getTotalBalanceByGender(usersList, 'male')) // 12053
+console.log(getTotalBalanceByGender(usersList, 'female')) // 8863
